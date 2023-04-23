@@ -17,8 +17,6 @@ export const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
     );
 }
 
-{/* <Notification message="There is no feedback"></Notification> */}
-
 Statistics.propTypes = {
     good: PropTypes.number.isRequired,
     neutral: PropTypes.number.isRequired,
