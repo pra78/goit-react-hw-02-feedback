@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { StatisticsHeader, StatisticsStyles } from './Statistics.styled';
+import { Fragment } from 'react';
 
 
 export const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
     return (
-        <div>
+        <Fragment>
             <StatisticsHeader>Statistics</StatisticsHeader>
             <StatisticsStyles>
                 <li>Good: {good}</li>
@@ -13,7 +14,7 @@ export const Statistics = ({good, neutral, bad, total, positivePercentage}) => {
                 <li>Total: {total}</li>
                 <li>Positive feedback: {positivePercentage}%</li>
             </StatisticsStyles>
-        </div>
+        </Fragment>
     );
 }
 

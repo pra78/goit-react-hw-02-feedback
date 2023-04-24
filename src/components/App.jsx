@@ -1,4 +1,4 @@
-import { Component } from "react"
+import { Component, Fragment } from "react"
 import { Section } from "./Section/Section";
 import { Statistics } from "./Statistics/Statistics";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
@@ -18,7 +18,7 @@ export class App extends Component {
   )
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    return Object.values(this.state).reduce((mark, acc) => acc += mark, 0);
   }
   
   countPositiveFeedbackPercentage() {
@@ -30,11 +30,11 @@ export class App extends Component {
     const total = this.countTotalFeedback();
     const positivePercentage = this.countPositiveFeedbackPercentage();
     return (
-      <div>
+      <Fragment>
         <Section title="Please leave feedback"></Section>
         <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.handleFeedback}></FeedbackOptions>
         {total ? <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positivePercentage}></Statistics> : <Notification message="There is no feedback"></Notification>}
-      </div>
+      </Fragment>
     );
   }
 };
